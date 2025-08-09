@@ -6,7 +6,9 @@ RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
+
 COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /app/Wallet_DIGITURNO ./Wallet_DIGITURNO
 
 RUN addgroup -g 1001 -S spring && adduser -u 1001 -S spring -G spring
 USER spring:spring
