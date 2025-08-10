@@ -20,5 +20,5 @@ jobs:
             cd /home/ec2-user/digiturno/turnos
             git pull origin main
             cd /home/ec2-user/digiturno
-            docker-compose stop turnos-service
-            docker-compose up -d --build turnos-service
+            docker-compose stop turnos
+            docker-compose up -d --build turnos
