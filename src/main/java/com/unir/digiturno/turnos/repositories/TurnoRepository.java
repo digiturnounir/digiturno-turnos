@@ -38,3 +38,4 @@ public interface TurnoRepository extends JpaRepository<Turno, Long> {
     List<Turno> findByTipoServicio(String tipoServicio);
 }
 
+
