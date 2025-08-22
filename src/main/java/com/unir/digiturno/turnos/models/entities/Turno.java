@@ -1,29 +1,24 @@
-package com.unir.digiturno.turnos.models.entities;
 
+package com.unir.digiturno.turnos.models.entities;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import org.hibernate.annotations.Generated;
+
 
 @Entity
 @Table(name = "turnos")
 public class Turno {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "turno_seq")
-    @SequenceGenerator(name = "turno_seq", sequenceName = "seq_turnos", allocationSize = 1)
-    @Column(name = "ID_TURNO")
+    @Generated()
+    @Column(name = "ID_TURNO", updatable = false, insertable = false)
     private Long id;
 
     @Column(name = "NEGOCIO_ID", nullable = false)
-    private Integer negocioId;
+    private Long negocioId;
     
     @Column(name = "CLIENTE_ID", nullable = false)
     private Integer clienteId;
@@ -37,8 +32,6 @@ public class Turno {
     @Column(name = "HORA", nullable = false)
     private LocalDateTime hora;
     
-    @Column(name = "TIPO_SERVICIO", length = 255)
-    private String tipoServicio;
     
     @Column(name = "NOTAS", length = 1000)
     private String notas;
@@ -76,11 +69,11 @@ public class Turno {
         this.id = id;
     }
     
-    public Integer getNegocioId() {
+    public Long getNegocioId() {
         return negocioId;
     }
-    
-    public void setNegocioId(Integer negocioId) {
+
+    public void setNegocioId(Long negocioId) {
         this.negocioId = negocioId;
     }
     
@@ -116,13 +109,7 @@ public class Turno {
         this.hora = hora;
     }
     
-    public String getTipoServicio() {
-        return tipoServicio;
-    }
-    
-    public void setTipoServicio(String tipoServicio) {
-        this.tipoServicio = tipoServicio;
-    }
+
     
     public String getNotas() {
         return notas;

@@ -13,7 +13,7 @@ import com.unir.digiturno.turnos.models.entities.Turno;
 public interface TurnoRepository extends JpaRepository<Turno, Long> {
 
     // Buscar turnos por negocio
-    List<Turno> findByNegocioId(Integer negocioId);
+    List<Turno> findByNegocioId(Long negocioId);
     
     // Buscar turnos por cliente
     List<Turno> findByClienteId(Integer clienteId);
@@ -22,20 +22,18 @@ public interface TurnoRepository extends JpaRepository<Turno, Long> {
     List<Turno> findByFecha(java.time.LocalDate fecha);
     
     // Buscar turnos por negocio y fecha
-    List<Turno> findByNegocioIdAndFecha(Integer negocioId, java.time.LocalDate fecha);
+    List<Turno> findByNegocioIdAndFecha(Long negocioId, java.time.LocalDate fecha);
     
     // Buscar turnos por estado
     List<Turno> findByEstadoId(Integer estadoId);
     
     // Buscar turnos por negocio y estado
-    List<Turno> findByNegocioIdAndEstadoId(Integer negocioId, Integer estadoId);
+    List<Turno> findByNegocioIdAndEstadoId(Long negocioId, Integer estadoId);
     
     // Consulta personalizada para turnos de un rango de fechas
     @Query("SELECT t FROM Turno t WHERE t.negocioId = :negocioId ORDER BY t.fecha, t.hora")
-    List<Turno> findTurnosByNegocioIdOrderByDateTime(@Param("negocioId") Integer negocioId);
+    List<Turno> findTurnosByNegocioIdOrderByDateTime(@Param("negocioId") Long negocioId);
     
-    // Buscar turnos por servicio
-    List<Turno> findByTipoServicio(String tipoServicio);
 }
 
 

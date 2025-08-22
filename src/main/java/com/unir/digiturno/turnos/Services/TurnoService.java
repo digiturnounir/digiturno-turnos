@@ -8,6 +8,7 @@ import com.unir.digiturno.turnos.models.entities.Turno;
 
 
 public interface TurnoService {
+    Turno saveTurnoConServicios(Turno turno, java.util.List<Long> serviciosIds);
 
     List<Turno> findAll();
     
@@ -20,17 +21,18 @@ public interface TurnoService {
     void remove(Long id);
     
     // Métodos específicos para turnos
-    List<Turno> findByNegocioId(Integer negocioId);
+    List<Turno> findByNegocioId(Long negocioId);
     
     List<Turno> findByClienteId(Integer clienteId);
     
     List<Turno> findByFecha(java.time.LocalDate fecha);
     
-    List<Turno> findByNegocioIdAndFecha(Integer negocioId, java.time.LocalDate fecha);
+    List<Turno> findByNegocioIdAndFecha(Long negocioId, java.time.LocalDate fecha);
     
     List<Turno> findByEstadoId(Integer estadoId);
     
-    List<Turno> findTurnosByNegocioIdOrderByDateTime(Integer negocioId);
+        List<Turno> findTurnosByNegocioIdOrderByDateTime(Long negocioId);
     
-    List<Turno> findByTipoServicio(String tipoServicio);
+        List<java.util.Map<String, Object>> getClientesPorNegocio(Long negocioId);
+    
 }
